@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script>
+function je_prastevilo(n) {
+    let deljitelj = 2;
+
+    if (n ==1) {
+        return false;
+        
+    }
+
+    while (deljitelj < n) {
+        if (n % deljitelj === 0) {
+            return false;
+        }
+        deljitelj = deljitelj +1;
+    } 
+    return true;
+}
+
+
+console.log(je_prastevilo(17));
+console.log(je_prastevilo(323));
+console.log(je_prastevilo(2));
+
+
+        </script>
+    </body>
+</html>

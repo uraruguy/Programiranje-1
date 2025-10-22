@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script>
+// initial comment
+function fizz_buzz (n) {
+    let Fizz = n %3;
+    let Buzz = n %5;
+
+    if ((Fizz == 0) && (Buzz == 0))
+        return "Fizzbuzz";
+    if (Fizz == 0)
+        return "Fizz";
+    if (Buzz == 0)
+        return "Buzz";
+    return n;
+    
+}
+
+console.log (fizz_buzz(27)); 
+console.log (fizz_buzz (25));
+console.log (fizz_buzz (60));
+console.log (fizz_buzz (13));
+
+        </script>
+    </body>
+</html>

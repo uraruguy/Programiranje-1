@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <script>
+function vsota_pravih_deliteljev(n) {
+
+    let vsota = 0;
+
+    for (let i = 1; i < n; i = i +1) { // i++ means da vsakič ke gre skoz poveča za 1!
+        if (n % i === 0) {
+            vsota = vsota +i;
+
+        }
+    }
+
+    return vsota;
+}   
+
+console.log(vsota_pravih_deliteljev(3));
+console.log(vsota_pravih_deliteljev(15));
+console.log(vsota_pravih_deliteljev(510));
+
+
+    </script>
+</body>
+
+</html>
