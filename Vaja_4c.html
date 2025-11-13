@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script>
+function poisci_najvecji_element(t, n) {
+  // Najprej najdemo indeks zadnjega pravega elementa (pred čuvajem 0)
+  let last = -1;
+  for (let i = 0; i < t.length; i++) {
+    if (t[i] === 0) {
+      last = i - 1;
+      break;
+    }
+  }
+
+  // Preverimo veljavnost n
+  if (n < 0 || n > last) {
+    return -1;
+  }
+
+  // Začetna največja vrednost je element na indeksu n
+  let maxValue = t[n];
+  let maxIndex = n;
+
+  // Gremo od n+1 do last in iščemo večjo vrednost
+  for (let i = n + 1; i <= last; i++) {
+    if (t[i] > maxValue) {
+      maxValue = t[i];
+      maxIndex = i;
+    }
+    // če je t[i] === maxValue, ne menjamo indeksa,
+    // zato ostane NAJMANJŠI indeks največjega elementa
+  }
+
+  return maxIndex;
+}
+
+
+t = [3, 56, 1, 8, 0];
+indeks = poisci_najvecji_element(t, 0);
+console.log(indeks);
+
+t = [23, 7, 12, 9, 728, 3, 13, 0];
+indeks = poisci_najvecji_element(t, 0);
+console.log(indeks);
+
+t = [3, 6, 16, 9, 0];
+indeks = poisci_najvecji_element(t, 0);
+console.log(indeks);
+
+t = [134, 3, 7, 99, 9, 18, 0];
+indeks = poisci_najvecji_element(t, 3);
+console.log(indeks);
+
+t = [1, 2, 3, 55, 3, 76, 1, 3, 76, 0];
+indeks = poisci_najvecji_element(t, 4);
+console.log(indeks);
+
+t = [2, 2, 2, 2, 2, 0];
+indeks = poisci_najvecji_element(t, 1);
+console.log(indeks);
+
+t = [1, 2, 3, 4, 5, 0];
+indeks = poisci_najvecji_element(t, -2);
+console.log(indeks);
+
+t = [1, 2, 3, 3, 3, 2, 2, 3, 0];
+indeks = poisci_najvecji_element(t, 8);
+console.log(indeks);
+
+        </script>
+    </body>
+</html>
