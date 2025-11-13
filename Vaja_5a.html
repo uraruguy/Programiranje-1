@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Vaja 5a</title>
+  </head>
+  <body>
+    <script>
+      // ZAMENJAJ DVE VREDNOSTI V TABELI (m in n)
+      function zamenjaj_elementa(t, m, n) {
+        // Najdemo indeks zadnjega pravega elementa (pred čuvajem 0)
+        let last = -1;
+        for (let i = 0; i < t.length; i++) {
+          if (t[i] === 0) {
+            last = i - 1;
+            break;
+          }
+        }
+
+        // Preverimo veljavnost indeksov
+        if (m < 0 || n < 0 || m > last || n > last) {
+          return -1;
+        }
+
+        // Klasična zamenjava s pomočjo začasne spremenljivke
+        let temp = t[m];
+        t[m] = t[n];
+        t[n] = temp;
+
+        return 0;
+      }
+
+      // POIŠČI NAJMANJŠI ELEMENT OD INDEKSA n NAPREJ
+      function poisci_najmanjsi_element(t, n) {
+        // Najdemo indeks zadnjega pravega elementa
+        let last = -1;
+        for (let i = 0; i < t.length; i++) {
+          if (t[i] === 0) {
+            last = i - 1;
+            break;
+          }
+        }
+
+        // Če je n izven mej, vrnemo -1
+        if (n < 0 || n > last) {
+          return -1;
+        }
+
+        // Začetni minimum je element na indeksu n
+        let minValue = t[n];
+        let minIndex = n;
+
+        // Od n+1 do last iščemo manjšo vrednost
+        for (let i = n + 1; i <= last; i++) {
+          if (t[i] < minValue) {
+            minValue = t[i];
+            minIndex = i;
+          }
+          // če je t[i] === minValue, ne spreminjamo minIndex,
+          // zato ostane NAJMANJŠI indeks
+        }
+
+        return minIndex;
+      }
+
+      // POIŠČI NAJVEČJI ELEMENT OD INDEKSA n NAPREJ
+      function poisci_najvecji_element(t, n) {
+        // Najdemo indeks zadnjega pravega elementa
+        let last = -1;
+        for (let i = 0; i < t.length; i++) {
+          if (t[i] === 0) {
+            last = i - 1;
+            break;
+          }
+        }
+
+        // Če je n izven mej, vrnemo -1
+        if (n < 0 || n > last) {
+          return -1;
+        }
+
+        // Začetni maksimum je element na indeksu n
+        let maxValue = t[n];
+        let maxIndex = n;
+
+        // Od n+1 do last iščemo večjo vrednost
+        for (let i = n + 1; i <= last; i++) {
+          if (t[i] > maxValue) {
+            maxValue = t[i];
+            maxIndex = i;
+          }
+          // če je t[i] === maxValue, ne spreminjamo maxIndex,
+          // zato ostane NAJMANJŠI indeks največje vrednosti
+        }
+
+        return maxIndex;
+      }
+
+      // UREDI TABEL0 GLEDE NA SMER (1 = naraščajoče, -1 = padajoče)
+      function uredi(t, smer) {
+        // Najprej najdemo indeks zadnjega pravega elementa (pred čuvajem 0)
+        let last = -1;
+        for (let i = 0; i < t.length; i++) {
+          if (t[i] === 0) {
+            last = i - 1; // zadnji pravi element je tik pred čuvajem
+            break;
+          }
+        }
+
+        // Če tabela nima elementov (npr. [0]), ni kaj urejati
+        if (last === -1) {
+          return;
+        }
+
+        // Urejanje naraščajoče
+        if (smer === 1) {
+          for (let i = 0; i <= last; i++) {
+            let indeksMin = poisci_najmanjsi_element(t, i);
+            if (indeksMin === -1) {
+              break;
+            }
+            zamenjaj_elementa(t, i, indeksMin);
+          }
+        }
+        // Urejanje padajoče
+        else if (smer === -1) {
+          for (let i = 0; i <= last; i++) {
+            let indeksMax = poisci_najvecji_element(t, i);
+            if (indeksMax === -1) {
+              break;
+            }
+            zamenjaj_elementa(t, i, indeksMax);
+          }
+        }
+        // če smer ni 1 ali -1 → ne naredimo nič
+      }
+
+      // TESTNI PRIMERI
+      let t;
+
+      t = [0];
+      uredi(t, 1);
+      console.log(JSON.stringify(t));
+
+      t = [1, 2, 3, 4, 5, 6, 0];
+      uredi(t, 1);
+      console.log(JSON.stringify(t));
+
+      t = [19, 4, 12, 54, 7, 239, 33, 7, 0];
+      uredi(t, 1);
+      console.log(JSON.stringify(t));
+
+      t = [42, 0];
+      uredi(t, -1);
+      console.log(JSON.stringify(t));
+
+      t = [2, 2, 45, 23, 2, 6, 45, 1, 0];
+      uredi(t, -1);
+      console.log(JSON.stringify(t));
+    </script>
+  </body>
+</html>
