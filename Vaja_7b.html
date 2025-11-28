@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script>
+function premakni_poliomino(p, d, ver, hor) {
+    // Go through all coordinates in polyomino
+    for (let i = 0; i < d; i++) {
+        // Move row by ver (vertical movement)
+        p[i][0] = p[i][0] + ver;
+        
+        // Move column by hor (horizontal movement)
+        p[i][1] = p[i][1] + hor;
+    }
+}
+
+// Test case 1: move up-left (-1, -1)
+let d1 = 3;
+let p1 = [[5, 2], [5, 3], [5, 4]];
+premakni_poliomino(p1, d1, -1, -1);
+console.log(JSON.stringify(p1));
+// [[4,1],[4,2],[4,3]]
+
+// Test case 2: move down (1, 0)
+let d2 = 3;
+let p2 = [[2, 3], [2, 4], [2, 5]];
+premakni_poliomino(p2, d2, 1, 0);
+console.log(JSON.stringify(p2));
+// [[3,3],[3,4],[3,5]]
+
+// Test case 3: move left (0, -1)
+let p3 = [[8, 5], [8, 6]];
+let d3 = 2;
+premakni_poliomino(p3, d3, 0, -1);
+console.log(JSON.stringify(p3));
+// [[8,4],[8,5]]
+
+        </script>
+    </body>
+</html>
