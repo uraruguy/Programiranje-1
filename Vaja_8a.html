@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script>
+function spusti_poliomino(tetris, p, d) {
+    function jeVeljavnaPozicija(poliomine) {
+        
+        for (let i = 0; i < poliomine.length; i++) {
+            let row = poliomine[i][0]; 
+            let col = poliomine[i][1];  
+            
+     
+            if (row < 0 || row >= tetris.length || 
+                col < 0 || col >= tetris[0].length ||
+                tetris[row][col] !== 1) {
+                return false;  
+            }
+        }
+        return true;  
+    }
+    
+
+    if (!jeVeljavnaPozicija(p)) {
+        return;  
+    }
+    
+ 
+    while (true) {
+        for (let i = 0; i < p.length; i++) {
+            p[i][0]++;  
+        }
+        
+
+        if (!jeVeljavnaPozicija(p)) {
+
+            for (let i = 0; i < p.length; i++) {
+                p[i][0]--;  
+            }
+            break;  
+        }
+        
+    }
+}
+
+
+
+        </script>
+    </body>
+</html>
